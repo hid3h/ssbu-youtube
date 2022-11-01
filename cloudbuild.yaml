@@ -34,7 +34,6 @@ substitutions:
   _SERVICE_NAME: ssbu-youtube
   _DEPLOY_REGION: asia-northeast1
   _GCR_HOSTNAME: asia.gcr.io
-  _PLATFORM: managed
 tags:
   - gcp-cloud-build-deploy-cloud-run
   - gcp-cloud-build-deploy-cloud-run-managed
