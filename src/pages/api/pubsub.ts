@@ -20,7 +20,7 @@ const pubsub = async (req: NextApiRequest, res: NextApiResponse) => {
   }
   console.log(JSON.stringify(entry))
 
-  Hoge.deliver
+  // Hoge.deliver
 
   res.status(200).json({tes: "ok"});
 };
