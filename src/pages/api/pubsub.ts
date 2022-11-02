@@ -10,7 +10,7 @@ const pubsub = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   if (method != "POST") {
-    res.status(404)
+     return res.status(404)
   }
 
   const entry: any = {
