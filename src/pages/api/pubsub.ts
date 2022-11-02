@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import Parser from "rss-parser"
 
 const pubsub = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req
@@ -13,12 +14,12 @@ const pubsub = async (req: NextApiRequest, res: NextApiResponse) => {
      return res.status(404)
   }
 
-  const entry: any = {
-    headers: req.headers,
-    method: req.method,
-    body: req.body
-  }
-  console.log(JSON.stringify(entry))
+  const parser = new Parser();
+  const feed = await parser.parseString(req.body)
+  console.log("feed", feed)
+
+  const item = feed.items[0]
+  console.log("item", item)
 
   // Hoge.deliver
 
