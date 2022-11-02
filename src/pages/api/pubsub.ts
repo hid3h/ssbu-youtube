@@ -6,7 +6,7 @@ const pubsub = async (req: NextApiRequest, res: NextApiResponse) => {
   // TODO: リクエスト検証
 
   if (method == "GET") {
-    res.status(200).send(req.query["hub.challenge"])
+    return res.status(200).send(req.query["hub.challenge"])
   }
 
   if (method != "POST") {
