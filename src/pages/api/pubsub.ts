@@ -11,7 +11,7 @@ const pubsub = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   if (method != "POST") {
-     return res.status(404)
+     return res.status(404).json({message: "error"})
   }
 
   const parser = new Parser();

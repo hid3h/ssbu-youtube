@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import crypto from "crypto";
 
-
 const webhook = async (req: NextApiRequest, res: NextApiResponse) => {
   const channelSecret = process.env.LINE_CHANNEL_SECRET || "";
   const { headers, body } = req
@@ -12,7 +11,7 @@ const webhook = async (req: NextApiRequest, res: NextApiResponse) => {
     .digest("base64");
 
   if (signature != headers["x-line-signature"]) {
-    return res.status(401)
+    return res.status(401).json({message: "error"})
   }
 
   res.status(200).json({tes: "ok"});
