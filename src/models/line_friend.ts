@@ -10,13 +10,13 @@ const LineFriend = class {
         }
       })
     } catch (e) {
-      console.log("become error", e)
       if (e instanceof Prisma.PrismaClientKnownRequestError) {
         if (e.code === "P2002") {
           // レコードが生成されていればいいので既にある場合は何もしない
           return
         }
       }
+      console.log("become error", e)
       throw e
     }
   }
