@@ -1,10 +1,10 @@
 const LinebotEventSource = class {
-  type: string
-  userId: string
+  private _type: string
+  private _userId: string
 
   constructor(type: string, userId: string) {
-    this.type = type
-    this.userId = userId
+    this._type = type
+    this._userId = userId
   }
 
   static new_via_webhook(source: any) {
@@ -12,6 +12,10 @@ const LinebotEventSource = class {
       source["type"],
       source["userId"],
     )
+  }
+
+  get userId(): string {
+    return this._userId
   }
 }
 

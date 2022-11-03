@@ -1,14 +1,14 @@
 import LinebotEventSource from "./linebot_event_source"
 
 const LinebotEvent = class {
-  type: string
-  source: typeof LinebotEventSource
-  occurredAt: Date
+  private _type: string
+  private _source: typeof LinebotEventSource
+  private _occurredAt: Date
 
   constructor(type: string, source: any, occurredAt: Date) {
-    this.type = type
-    this.source = source
-    this.occurredAt = occurredAt
+    this._type = type
+    this._source = source
+    this._occurredAt = occurredAt
   }
 
   static new_via_webhook(event: any) {
@@ -19,8 +19,16 @@ const LinebotEvent = class {
     )
   }
 
+  get source() {
+    return this._source
+  }
+
   isFollow(): boolean {
-    return this.type == "follow"
+    return this._type == "follow"
+  }
+
+  isMessage(): boolean {
+    return this._type == "message"
   }
 }
 
