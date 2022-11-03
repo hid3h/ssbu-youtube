@@ -2,10 +2,10 @@ import { Prisma } from "@prisma/client";
 import { prisma } from "../server/db/client";
 
 const LineFriend = class {
-  static become(linebot_event_source: any) {
+  static async become(linebot_event_source: any) {
     console.log("来てます")
     try {
-      prisma.line_friends.create({
+      await prisma.line_friends.create({
         data: {
           line_user_id: linebot_event_source.userId,
         }
