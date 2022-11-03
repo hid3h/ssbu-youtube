@@ -3,7 +3,6 @@ import { prisma } from "../server/db/client";
 
 const LineFriend = class {
   static async become(linebot_event_source: any) {
-    console.log("来てます")
     try {
       await prisma.line_friends.create({
         data: {
@@ -11,7 +10,7 @@ const LineFriend = class {
         }
       })
     } catch (e) {
-      console.log("e", e)
+      console.log(JSON.stringify(e))
       if (e instanceof Prisma.PrismaClientKnownRequestError) {
         if (e.code === "P2002") {
           // レコードが生成されていればいいので既にある場合は何もしない
