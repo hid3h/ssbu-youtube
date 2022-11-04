@@ -9,15 +9,15 @@ class YoutubeFeedDeliver {
     this._youtubeFeed = youtubeFeed
   }
 
-  async deliver(youtubeFeed: YoutubeFeed) {
-    if (!youtubeFeed.isLucas() || !youtubeFeed.isNess()) {
+  async deliver() {
+    if (!this._youtubeFeed.isLucas() || !this._youtubeFeed.isNess()) {
       return
     }
 
     const lineUserIds: string[] = await LineFriend.testLineUserIds()
     const messages: any = [{
       type: "text",
-      text: youtubeFeed.link
+      text: this._youtubeFeed.link
     }]
     new LineMessage().multicast(
       lineUserIds,
