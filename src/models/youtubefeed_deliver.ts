@@ -10,7 +10,7 @@ class YoutubeFeedDeliver {
   }
 
   async deliver(youtubeFeed: YoutubeFeed) {
-    if (!youtubeFeed.isLucas()) {
+    if (!youtubeFeed.isLucas() || !youtubeFeed.isNess()) {
       return
     }
 

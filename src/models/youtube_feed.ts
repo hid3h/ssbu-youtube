@@ -17,6 +17,11 @@ class YoutubeFeed {
     const regexp = /リュカ|Lucas/;
     return regexp.test(this._title)
   }
+
+  isNess(): boolean {
+    const regexp = /ネス|Ness/;
+    return regexp.test(this._title)
+  }
 }
 
 export default YoutubeFeed;
