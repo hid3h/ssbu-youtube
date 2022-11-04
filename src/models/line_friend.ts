@@ -27,6 +27,11 @@ const LineFriend = class {
       return line_friend.line_user_id
     })
   }
+
+  static async testLineUserFirstId() {
+    const line_friend = await prisma.line_friends.findFirst()
+    return line_friend?.line_user_id
+  }
 }
 
 export default LineFriend;

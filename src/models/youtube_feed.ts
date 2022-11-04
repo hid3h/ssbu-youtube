@@ -22,6 +22,11 @@ class YoutubeFeed {
     const regexp = /ネス|Ness/;
     return regexp.test(this._title)
   }
+
+  isSora(): boolean {
+    const regexp = /ソラ|Sora/;
+    return regexp.test(this._title)
+  }
 }
 
 export default YoutubeFeed;

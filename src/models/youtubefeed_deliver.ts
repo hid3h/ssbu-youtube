@@ -10,11 +10,20 @@ class YoutubeFeedDeliver {
   }
 
   async deliver() {
-    if (!this._youtubeFeed.isLucas() || !this._youtubeFeed.isNess()) {
+    let lineUserIds: string[] = []
+
+    if (this._youtubeFeed.isLucas()) {
+      lineUserIds = await LineFriend.testLineUserIds()
+    }
+
+    if (this._youtubeFeed.isNess() || this._youtubeFeed.isSora()) {
+      lineUserIds = [await LineFriend.testLineUserFirstId() || ""]
+    }
+
+    if (!lineUserIds.length) {
       return
     }
 
-    const lineUserIds: string[] = await LineFriend.testLineUserIds()
     const messages: any = [{
       type: "text",
       text: this._youtubeFeed.link
