@@ -8,6 +8,15 @@ class YoutubeFeed {
     this._link = item["link"]
     this._youtubeId = item["id"]
   }
+
+  get link() {
+    return this._link
+  }
+
+  isLucas(): boolean {
+    const regexp = /リュカ|Lucas/;
+    return regexp.test(this._title)
+  }
 }
 
 export default YoutubeFeed;

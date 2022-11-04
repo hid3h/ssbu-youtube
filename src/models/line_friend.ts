@@ -20,6 +20,13 @@ const LineFriend = class {
       throw e
     }
   }
+
+  static async testLineUserIds() {
+    const line_friends = await prisma.line_friends.findMany()
+    return line_friends.map((line_friend) => {
+      return line_friend.line_user_id
+    })
+  }
 }
 
 export default LineFriend;

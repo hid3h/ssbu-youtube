@@ -1,3 +1,5 @@
+import LineFriend from "./line_friend";
+import LineMessage from "./line_message";
 import YoutubeFeed from "./youtube_feed";
 
 class YoutubeFeedDeliver {
@@ -7,8 +9,20 @@ class YoutubeFeedDeliver {
     this._youtubeFeed = youtubeFeed
   }
 
-  deliver() {
-    
+  async deliver(youtubeFeed: YoutubeFeed) {
+    if (!youtubeFeed.isLucas()) {
+      return
+    }
+
+    const lineUserIds: string[] = await LineFriend.testLineUserIds()
+    const messages: any = [{
+      type: "text",
+      text: youtubeFeed.link
+    }]
+    new LineMessage().multicast(
+      lineUserIds,
+      messages,
+    )
   }
 }
 

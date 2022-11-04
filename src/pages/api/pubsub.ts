@@ -21,7 +21,7 @@ const pubsub = async (req: NextApiRequest, res: NextApiResponse) => {
   const item = new YoutubeFeed(feed.items[0])
   console.log("item", item)
 
-  new YoutubeFeedDeliver(item).deliver()
+  new YoutubeFeedDeliver(item).deliver(item)
 
   res.status(200).json({tes: "ok"});
 };
