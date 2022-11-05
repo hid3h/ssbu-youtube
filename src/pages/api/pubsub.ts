@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import Parser from "rss-parser"
 import YoutubeFeedDeliver from "../../models/youtubefeed_deliver";
 import YoutubeFeed from "../../models/youtube_feed";
+import { Logger } from "../../utils/logger";
 
 const pubsub = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req
@@ -18,8 +19,13 @@ const pubsub = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const parser = new Parser();
   const feed = await parser.parseString(req.body)
+
+  Logger.output(
+    "INFO",
+    feed
+  )
+
   const item = new YoutubeFeed(feed.items[0])
-  console.log("item", item)
 
   new YoutubeFeedDeliver(item).deliver()
 
