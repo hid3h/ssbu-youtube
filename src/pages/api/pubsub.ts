@@ -17,7 +17,11 @@ const pubsub = async (req: NextApiRequest, res: NextApiResponse) => {
      return res.status(404).json({message: "error"})
   }
 
-  const parser = new Parser();
+  const parser = new Parser({
+    customFields: {
+      item: ["updated"],
+    }
+  });
   const feed = await parser.parseString(req.body)
 
   Logger.output(
