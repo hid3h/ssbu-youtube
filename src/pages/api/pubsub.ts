@@ -26,7 +26,7 @@ const pubsub = async (req: NextApiRequest, res: NextApiResponse) => {
 
   Logger.output(
     "INFO",
-    feed
+    feed.items[0] || {}
   )
 
   const item = new YoutubeFeed(feed.items[0])
